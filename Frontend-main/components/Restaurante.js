@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, SafeAreaView, TouchableOpacity, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, Image, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
+import Reservar from './Reservar'; // Importa el componente Reservar
 
-const Restaurante = ({ route }) => {
+const Restaurante = ({ route, navigation }) => {
   const { nombre, descripcion, imagen } = route.params;
-  const windowWidth = useWindowDimensions().width;
-  const maxWidth = 750; // Set your maximum width here
-  const imageWidth = Math.min(windowWidth - 40, maxWidth); // Consider padding of 20 on each side
+
+  const handleReservarPress = () => {
+    // Implementa la navegación o lógica para ir a la vista de Reservar
+    navigation.navigate('Reservar');
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
@@ -13,12 +16,9 @@ const Restaurante = ({ route }) => {
         <View style={styles.container}>
           <Text style={styles.nombre}>{nombre}</Text>
           <Text style={styles.descripcion}>{descripcion}</Text>
-          <Image source={imagen} style={{ width: imageWidth, height: imageWidth * 0.75 }} resizeMode="cover" />
-          {/* Adjust height as needed based on aspect ratio */}
-          {/* Add additional restaurant details here (e.g., phone number, address) */}
-          <TouchableOpacity style={styles.reservarButton}>
-            <Text style={styles.reservarButtonText}>Reservar</Text>
-          </TouchableOpacity>
+          <Image source={imagen} style={styles.image} resizeMode="cover" />
+          {/* Agrega el componente Reservar */}
+          <Reservar onPress={handleReservarPress} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -28,7 +28,7 @@ const Restaurante = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    alignItems: 'center', // Center the content horizontally
+    alignItems: 'center', // Centra el contenido horizontalmente
   },
   nombre: {
     fontSize: 24,
@@ -39,16 +39,11 @@ const styles = StyleSheet.create({
     color: '#808080',
     marginBottom: 20,
   },
-  reservarButton: {
-    backgroundColor: '#2196F3',
-    padding: 15,
+  image: {
+    width: '100%',
+    height: 200,
     borderRadius: 10,
-    marginTop: 20,
-  },
-  reservarButtonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 18,
+    marginBottom: 20,
   },
 });
 

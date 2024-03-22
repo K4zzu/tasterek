@@ -1,3 +1,4 @@
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import AboutUsScreen from './AboutUsScreen';
@@ -8,7 +9,12 @@ import Elcorral from './Elcorral';
 import Restaurante from './Restaurante';
 import Inicio from './Inicio';
 import RestaurantList from './HomeScreen';
-import Header from '../components/Header'; // Corregido el nombre de la importación
+import Header from '../components/Header';
+import Reservar from './Reservar';
+import MetodoPago from './MetodoPago';
+import PagoPSE from './PagoPSE';
+import PagoTarjeta from './PagoTarjeta';
+
 
 const Stack = createStackNavigator();
 
@@ -19,42 +25,62 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Inicio"
           component={Inicio}
-          options={{ headerShown: false }} // Oculta el encabezado en esta pantalla
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Restaurantes"
           component={RestaurantList}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
+        
         <Stack.Screen
           name="About Us"
           component={AboutUsScreen}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
         <Stack.Screen
           name="Contact Us"
           component={ContactUsScreen}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
         <Stack.Screen
           name="La Granja"
           component={Lagranja}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
         <Stack.Screen
           name="Marmoreo"
           component={Marmoreo}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
         <Stack.Screen
           name="El Corral"
           component={Elcorral}
-          options={{ header: props => <Header {...props} /> }} // Muestra el encabezado en esta pantalla
+          options={{ header: props => <Header {...props} /> }}
         />
         <Stack.Screen
           name="Restaurante"
           component={Restaurante}
-          // options={({ route }) => ({ title: route.params.nombre })}
+          options={{ header: props => <Header {...props} /> }}
+        />
+        <Stack.Screen
+          name="Reservar"
+          component={Reservar}
+          options={{ header: props => <Header {...props} /> }}
+        />
+        <Stack.Screen
+          name="MetodoPago"
+          component={MetodoPago}
+          options={{ header: props => <Header {...props} /> }}
+        />
+        <Stack.Screen
+          name="PagoPSE"
+          component={PagoPSE}
+          options={{ header: props => <Header {...props} /> }}
+        />
+        <Stack.Screen
+          name="PagoTarjeta"
+          component={PagoTarjeta}
           options={{ header: props => <Header {...props} /> }}
         />
       </Stack.Navigator>
@@ -63,3 +89,4 @@ const AppNavigator = () => {
 };
 
 export default AppNavigator;
+
